@@ -19,13 +19,49 @@ def button_clear():
 def button_add():
     first_number = e.get()
     global f_num
+    global match
+    match = "addition"
     f_num = int(first_number)
     e.delete(0,END)
 
 def button_equal():
     secand_number = e.get()
     e.delete(0,END)
-    e.insert(0,f_num + int(secand_number))
+    if match == "addition":
+        e.insert(0,f_num + int(secand_number))
+    if match == "subtraction":
+        e.insert(0,f_num - int(secand_number))
+    if match == "multiplication":
+        e.insert(0,f_num * int(secand_number))
+    if match == "division":
+        e.insert(0,f_num / int(secand_number))
+
+    
+    
+
+def button_subtract():
+    first_number = e.get()
+    global f_num
+    global match
+    match = "subtraction"
+    f_num = int(first_number)
+    e.delete(0,END)
+
+def button_multiply():
+    first_number = e.get()
+    global f_num
+    global match
+    match = "multiplication"
+    f_num = int(first_number)
+    e.delete(0,END)
+
+def button_divide():
+    first_number = e.get()
+    global f_num
+    global match
+    match = "division"
+    f_num = int(first_number)
+    e.delete(0,END)
 
 #define buttons
 button_1 = Button(root,text="1",padx=40, pady=20 ,command=lambda: button_click(1))
@@ -41,6 +77,10 @@ button_0 = Button(root,text="0",padx=40, pady=20 ,command=lambda: button_click(0
 button_addd = Button(root,text="+", padx=39, pady=20 ,command=button_add)
 button_equall = Button(root,text="=",padx=91,pady=20,command=button_equal)
 button_clearr = Button(root,text="Clear",padx=79, pady=20 ,command=button_clear)
+
+button_subtract = Button(root,text="-", padx=41, pady=20 ,command=button_subtract)
+button_multiply = Button(root,text="*", padx=40, pady=20 ,command=button_multiply)
+button_divide = Button(root,text="/", padx=41, pady=20 ,command=button_divide)
 
 # show the buttons
 button_1.grid(row=3,column=0)
@@ -59,5 +99,9 @@ button_0.grid(row=4,column=0)
 button_clearr.grid(row=4,column=1,columnspan=2)
 button_addd.grid(row=5,column=0)
 button_equall.grid(row=5,column=1,columnspan=2)
+
+button_subtract.grid(row=6 , column=0)
+button_multiply.grid(row=6 , column=1)
+button_divide.grid(row=6 , column=2)
 
 root.mainloop()
